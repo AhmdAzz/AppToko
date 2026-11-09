@@ -16,8 +16,6 @@ public class DetailProdukController {
     @FXML private Label kategoriLabel;
     @FXML private Label hargaLabel;
     @FXML private Label pesanLabel;
-    
-    // Tambahan: Komponen ImageView untuk menampilkan gambar
     @FXML private ImageView imageViewDetail;
 
     private Navigator nav;
@@ -35,9 +33,8 @@ public class DetailProdukController {
             if (kategoriLabel != null) kategoriLabel.setText(p.getKategori());
             if (hargaLabel != null) hargaLabel.setText(String.valueOf(p.getHarga()));
             
-            // Tambahan: Logika untuk mengambil dan menampilkan gambar produk
             if (imageViewDetail != null) {
-                String imagePath = p.getImagePath(); // Pastikan getter sesuai dengan yang ada di Produk.java
+                String imagePath = p.getImagePath(); 
                 if (imagePath != null && !imagePath.isEmpty()) {
                     imageViewDetail.setImage(new Image(imagePath));
                 } else {
