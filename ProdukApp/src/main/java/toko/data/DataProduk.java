@@ -11,14 +11,12 @@ public class DataProduk {
     private ObservableList<Produk> listProduk = FXCollections.observableArrayList();
 
     public DataProduk() {
-        // data kosong di awal
     }
 
     public ObservableList<Produk> getListProduk() {
         return listProduk;
     }
 
-    // buat auto kode PRD001 dst
     private String genKode() {
         Set<Integer> set = new HashSet<>();
         for (Produk p : listProduk) {
