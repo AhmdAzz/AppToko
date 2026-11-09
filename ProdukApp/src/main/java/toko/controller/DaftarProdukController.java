@@ -25,8 +25,6 @@ public class DaftarProdukController {
     @FXML private TableColumn<Produk, String> namaCol;
     @FXML private TableColumn<Produk, String> kategoriCol;
     @FXML private TableColumn<Produk, Double> hargaCol;
-    
-    // Tambahan: Kolom untuk gambar
     @FXML private TableColumn<Produk, ImageView> gambarCol;
     
     @FXML private TextField cariField;
@@ -43,13 +41,12 @@ public class DaftarProdukController {
         kategoriCol.setCellValueFactory(new PropertyValueFactory<>("kategori"));
         hargaCol.setCellValueFactory(new PropertyValueFactory<>("harga"));
         
-        // Tambahan: Mengatur sel kolom gambar
         gambarCol.setCellValueFactory(cellData -> {
-            String imagePath = cellData.getValue().getImagePath(); // Pastikan getter sesuai dengan di Produk.java
+            String imagePath = cellData.getValue().getImagePath();
             if (imagePath != null && !imagePath.isEmpty()) {
                 ImageView imgView = new ImageView(new Image(imagePath));
-                imgView.setFitHeight(50); // Tinggi thumbnail
-                imgView.setFitWidth(50);  // Lebar thumbnail
+                imgView.setFitHeight(50); 
+                imgView.setFitWidth(50);  
                 imgView.setPreserveRatio(true);
                 return new SimpleObjectProperty<>(imgView);
             }
