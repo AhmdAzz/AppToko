@@ -26,7 +26,6 @@ public class FormProdukController {
     private DataProduk data;
     private Produk pEdit;
     
-    // Tambahan: Variabel untuk menyimpan path gambar
     private String selectedImagePath = "";
 
     @FXML
@@ -47,8 +46,7 @@ public class FormProdukController {
             jenisBox.setValue(pEdit.getKategori());
             hargaField.setText(String.valueOf(pEdit.getHarga()));
             
-            // Tambahan: Menampilkan gambar saat mode Edit
-            selectedImagePath = pEdit.getImagePath(); // Pastikan method ini sesuai dengan getter di Produk.java
+            selectedImagePath = pEdit.getImagePath(); 
             if (selectedImagePath != null && !selectedImagePath.isEmpty()) {
                 imageViewPreview.setImage(new Image(selectedImagePath));
             } else {
@@ -59,13 +57,11 @@ public class FormProdukController {
             namaField.clear();
             hargaField.clear();
             
-            // Tambahan: Mengosongkan form gambar saat mode Tambah
             selectedImagePath = "";
             imageViewPreview.setImage(null);
         }
     }
 
-    // Tambahan: Method untuk tombol "Pilih Gambar"
     @FXML
     private void pilihGambar() {
         FileChooser fileChooser = new FileChooser();
@@ -74,13 +70,10 @@ public class FormProdukController {
             new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
         );
 
-        // Menampilkan dialog open file
         File selectedFile = fileChooser.showOpenDialog(imageViewPreview.getScene().getWindow());
 
         if (selectedFile != null) {
-            // Mengubah file menjadi format URI string agar terbaca oleh Image JavaFX
             selectedImagePath = selectedFile.toURI().toString();
-            // Tampilkan ke ImageView
             imageViewPreview.setImage(new Image(selectedImagePath));
         }
     }
@@ -93,15 +86,12 @@ public class FormProdukController {
             String kat = jenisBox.getValue();
             double harga = Double.parseDouble(hargaField.getText().trim());
             
-            // Perbaikan: Ambil path gambar dari variabel selectedImagePath
             String imagePath = selectedImagePath;
 
             if (pEdit == null) {
-                // Pastikan fungsi tambahData di DataProduk sudah menerima parameter imagePath
                 Produk pBaru = data.tambahData(nama, kat, harga, imagePath);
                 nav.bukaDetail(pBaru);
             } else {
-                // Pastikan fungsi editData di DataProduk sudah menerima parameter imagePath
                 data.editData(pEdit, nama, kat, harga, imagePath);
                 Produk pUbah = new Produk(pEdit.getKode(), nama, kat, harga, imagePath);
                 nav.bukaDetail(pUbah);
