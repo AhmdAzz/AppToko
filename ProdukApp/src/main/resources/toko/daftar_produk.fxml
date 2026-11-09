@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane stylesheets="@styles/app.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="toko.controller.DaftarProdukController">
+    <top>
+        <VBox spacing="12" styleClass="header">
+            <Label styleClass="title" text="Daftar Produk Toko" />
+            <HBox spacing="10">
+                <TextField fx:id="cariField" onAction="#cari" promptText="Cari nama produk..." HBox.hgrow="ALWAYS" />
+                <Button onAction="#cari" styleClass="button-primary" text="Cari" />
+            </HBox>
+            <FlowPane hgap="10" vgap="8">
+                <Button fx:id="tambah" onAction="#tambah" styleClass="button-primary" text="Tambah Produk Baru" />
+                <Button fx:id="detail" onAction="#detail" text="Lihat Detail" />
+                <Button fx:id="edit" onAction="#edit" text="Edit Produk" />
+                <Button fx:id="hapus" onAction="#hapus" text="Hapus" />
+            </FlowPane>
+        </VBox>
+    </top>
+    <center>
+        <TableView fx:id="tabel">
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
+            <columns>
+                <TableColumn fx:id="kodeCol" prefWidth="120" text="Kode" />
+                <TableColumn fx:id="namaCol" prefWidth="250" text="Nama Produk" />
+                <TableColumn fx:id="kategoriCol" prefWidth="150" text="Kategori" />
+                <TableColumn fx:id="hargaCol" prefWidth="150" text="Harga (Rp)" />
+            <TableColumn fx:id="gambarCol" prefWidth="150" text="Gambar" />
+            </columns>
+        </TableView>
+    </center>
+    <bottom>
+        <Label fx:id="pesanLabel" styleClass="error" wrapText="true" />
+    </bottom>
+</BorderPane>

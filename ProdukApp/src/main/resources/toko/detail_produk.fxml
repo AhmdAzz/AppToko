@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane stylesheets="@styles/app.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="toko.controller.DetailProdukController">
+    <top>
+        <HBox spacing="16" styleClass="header">
+            <Label styleClass="title" text="Detail Produk Toko" />
+            <Button onAction="#bukaDaftar" text="Lihat Daftar" />
+        </HBox>
+    </top>
+    <center>
+        <ScrollPane fitToWidth="true">
+            <content>
+                <VBox spacing="16" styleClass="page">
+                    <VBox prefHeight="404.0" prefWidth="347.0" spacing="12" styleClass="card">
+                        <Label styleClass="subtitle" text="Informasi Produk" />
+                        
+                        <GridPane hgap="12" vgap="8">
+                            <Label text="Kode Produk:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                            <Label fx:id="kodeLabel" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                            
+                            <Label text="Nama Produk:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                            <Label fx:id="namaLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                            
+                            <Label text="Kategori:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                            <Label fx:id="kategoriLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            
+                            <Label text="Harga (Rp):" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                            <Label fx:id="hargaLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     <columnConstraints>
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                     </rowConstraints>
+                        </GridPane>
+                  <ImageView fx:id="imageViewDetail" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        
+                        <Label fx:id="pesanLabel" styleClass="error" wrapText="true" />
+                         <Button onAction="#edit" styleClass="button-primary" text="Edit Produk" />
+                         <Button onAction="#bukaDaftar" prefWidth="144.0" text="Kembali ke Daftar" />
+                    </VBox>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>
